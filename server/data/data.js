@@ -1,9 +1,15 @@
 // data.js
+require("dotenv").config(); // load .env variables
 const mongoose = require("mongoose");
 const Transaction = require("../models/Transactions"); // adjust path to your Transaction model
 
-// Hardcoded MongoDB URL
-const MONGO_URL = "mongodb://127.0.0.1:27017/FinanceTracker"; 
+// Use MongoDB URL from .env
+const MONGO_URL = process.env.MONGO_URL;
+
+if (!MONGO_URL) {
+  console.error("❌ MONGO_URL not found in .env");
+  process.exit(1);
+}
 
 async function run() {
   try {
