@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+:root {
+  --accent-1: #5c2a9d;
+  --accent-2: #ff6fd8;
+  --card-bg: rgba(255, 255, 255, 0.9);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html,
+#root {
+  height: 100%;
+}
+
+.login-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff7ad 0%, #ffa9f9 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+  padding: 24px;
+}
+
+/* Animated floating orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.4;
+  z-index: 0;
+  pointer-events: none;
+}
+.orb-1 {
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 220, 180, 0.55);
+  top: -60px;
+  left: -60px;
+  animation: floatA 10s ease-in-out infinite;
+}
+.orb-2 {
+  width: 280px;
+  height: 280px;
+  background: rgba(255, 150, 250, 0.3);
+  bottom: -60px;
+  right: -40px;
+  animation: floatB 12s ease-in-out infinite;
+}
+.orb-3 {
+  width: 180px;
+  height: 180px;
+  background: rgba(255, 255, 255, 0.25);
+  top: 35%;
+  right: 15%;
+  animation: floatA 14s ease-in-out infinite reverse;
+}
+
+@keyframes floatA {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(18px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes floatB {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(12px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+/* Left section */
+.hero-image {
+  width: 100%;
+  max-width: 540px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+.hero-image:hover {
+  transform: scale(1.03);
+  filter: drop-shadow(0px 8px 30px rgba(255, 193, 7, 0.45));
+}
+
+/* Text under image */
+.brand-name {
+  font-size: 2rem;
+  color: #3b2b45;
+  margin-top: 10px;
+}
+.brand-tagline {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Right side - login box */
+.login-card {
+  z-index: 2;
+  background: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 40px rgba(20, 20, 20, 0.08);
+}
+
+/* Input focus */
+.form-control:focus {
+  box-shadow: 0 6px 18px rgba(82, 63, 255, 0.12);
+  border-color: rgba(92, 42, 157, 0.9);
+}
+
+/* Button */
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
+}
+
+/* Responsive: stack on small devices */
+@media (max-width: 992px) {
+  .hero-image {
+    max-width: 360px;
+  }
+  .brand-name {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-image {
+    max-width: 280px;
+    margin-bottom: 18px;
+  }
+  .login-card {
+    padding: 2rem !important;
+  }
+}

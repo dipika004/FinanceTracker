@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/* ---------- Background ---------- */
+.signup-wrapper {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fff7ad 0%, #ffa9f9 100%);
+}
+
+/* Animated gradient waves */
+.animated-background {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, #ffd6f6 10%, transparent 60%),
+              radial-gradient(circle at bottom right, #ffeec4 10%, transparent 60%);
+  animation: gradientFlow 12s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+@keyframes gradientFlow {
+  0% {
+    transform: scale(1) translate(0px, 0px);
+  }
+  100% {
+    transform: scale(1.1) translate(30px, 30px);
+  }
+}
+
+/* Floating Orbs */
+.floating-orbs .orb {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.4;
+  filter: blur(60px);
+  z-index: 0;
+  animation: floatOrb 10s infinite ease-in-out alternate;
+}
+
+.orb1 {
+  background: rgba(255, 180, 255, 0.5);
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: 5%;
+}
+.orb2 {
+  background: rgba(255, 230, 180, 0.5);
+  width: 250px;
+  height: 250px;
+  bottom: 10%;
+  right: 10%;
+  animation-delay: 2s;
+}
+.orb3 {
+  background: rgba(255, 255, 255, 0.3);
+  width: 200px;
+  height: 200px;
+  top: 40%;
+  left: 70%;
+  animation-delay: 4s;
+}
+
+@keyframes floatOrb {
+  0% {
+    transform: translateY(0px) translateX(0px);
+  }
+  100% {
+    transform: translateY(-40px) translateX(40px);
+  }
+}
+
+/* ---------- Image Section ---------- */
+.image-container {
+  position: relative;
+  z-index: 2;
+}
+
+.glow-image {
+  border-radius: 50%;
+  filter: drop-shadow(0 0 40px rgba(255, 169, 249, 0.7));
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.glow-image:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 60px rgba(255, 169, 249, 0.9));
+}
+
+/* ---------- Text Gradient ---------- */
+.text-gradient {
+  background: linear-gradient(90deg, #5c2a9d, #ff69b4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---------- Button ---------- */
+.gradient-btn {
+  background: linear-gradient(90deg, #ff69b4, #8a2be2);
+  box-shadow: 0 0 15px rgba(255, 169, 249, 0.5);
+  transition: all 0.3s ease;
+}
+
+.gradient-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(255, 169, 249, 0.8);
+}
+
+/* ---------- Form ---------- */
+.form-box {
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(12px);
+  animation: fadeInUp 1s ease both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Links ---------- */
+.link-highlight {
+  color: #ff69b4;
+  transition: color 0.3s ease;
+}
+
+.link-highlight:hover {
+  color: #8a2be2;
+}

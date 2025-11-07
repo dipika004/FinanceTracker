@@ -1,0 +1,5 @@
+/* src/pages/AiAssistant/AiAssistant.css */
+.chat-area { scrollbar-width: thin; }
+@media (max-width: 768px) {
+  .container-fluid { margin-left: 0 !important; }
+}
