@@ -15,23 +15,30 @@ export default function Login() {
     setFormData((s) => ({ ...s, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const response = await axios.post("https://financetracker-backend-tv60.onrender.com/api/auth/login", formData);
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("name", response.data.user?.name || "");
-      localStorage.setItem("userId", response.data.id?.id || "");
-      alert(response.data.message || "Login successful");
-      navigate("/dashboard");
-    } catch (err) {
-      console.error(err);
-      alert(err.response?.data?.message || "An error occurred");
-    } finally {
-      setLoading(false);
-    }
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  try {
+    const response = await axios.post(
+      "https://financetracker-backend-tv60.onrender.com/api/auth/login",
+      formData,
+      { headers: { "Content-Type": "application/json" } }
+    );
+
+    localStorage.setItem("token", response.data.token);
+    localStorage.setItem("name", response.data.user?.name || "");
+    localStorage.setItem("userId", response.data.id); // Corrected
+
+    alert(response.data.message || "Login successful");
+    navigate("/dashboard");
+  } catch (err) {
+    console.error(err.response?.data || err);
+    alert(err.response?.data?.message || "An error occurred");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="login-page">
