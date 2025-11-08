@@ -1,6 +1,6 @@
-pandas==2.0.3
 Flask==2.3.3
 pymongo==4.7.1
+pandas==2.1.2
 pillow==10.0.1
 pytesseract==0.3.10
 pdf2image==1.16.3
