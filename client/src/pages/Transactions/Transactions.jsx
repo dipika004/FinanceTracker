@@ -14,7 +14,7 @@ export default function Transactions() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/transactions/transaction-data",
+          "https://financetracker-backend-tv60.onrender.com/api/transactions/transaction-data",
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setTransactions(response.data);
@@ -43,7 +43,7 @@ export default function Transactions() {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this transaction?")) return;
     try {
-      await axios.delete(`http://localhost:8080/api/transactions/${id}`, {
+      await axios.delete(`https://financetracker-backend-tv60.onrender.com/api/transactions/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTransactions((prev) => prev.filter((t) => t._id !== id));

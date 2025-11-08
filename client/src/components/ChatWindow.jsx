@@ -21,7 +21,7 @@ export default function ChatWindow({ chatId, onChatUpdate }) {
     if (!chatId) return;
     const token = localStorage.getItem("token");
     try {
-      const res = await axios.get(`http://localhost:8080/api/chat/${chatId}`, {
+      const res = await axios.get(`https://financetracker-backend-tv60.onrender.com/api/chat/${chatId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMessages(res.data.messages || []);
@@ -46,7 +46,7 @@ export default function ChatWindow({ chatId, onChatUpdate }) {
 
     try {
       const res = await axios.post(
-        `http://localhost:8080/api/chat/${chatId}/message`,
+        `https://financetracker-backend-tv60.onrender.com/api/chat/${chatId}/message`,
         { message: messageToSend },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -61,7 +61,7 @@ export default function ChatWindow({ chatId, onChatUpdate }) {
             : messageToSend;
 
         await axios.put(
-          `http://localhost:8080/api/chat/${chatId}/title`,
+          `https://financetracker-backend-tv60.onrender.com/api/chat/${chatId}/title`,
           { title },
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -106,7 +106,7 @@ export default function ChatWindow({ chatId, onChatUpdate }) {
 
     try {
       const res = await axios.post(
-        `http://localhost:8080/api/chat/${chatId}/message`,
+        `https://financetracker-backend-tv60.onrender.com/api/chat/${chatId}/message`,
         {
           message: input,
           edited: true,
