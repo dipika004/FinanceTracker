@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
-import ChatSidebar from "../../components/ChatSidebar";
-import ChatWindow from "../../components/ChatWindow";
+import ChatSidebar from "../../components/ChatSidebar.jsx";
+import ChatWindow from "../../components/ChatWindow.jsx";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
