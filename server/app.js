@@ -4,11 +4,13 @@ const cors = require('cors');
 const { exec } = require("child_process");
 require('dotenv').config();
 
-const port = process.env.PORT || 8080;  // Use Render assigned port if available
+const port = process.env.PORT || 8080;  // Render assigns port dynamically
 const app = express();
 const jwt = require('jsonwebtoken');
 
+// ----------------------------
 // Import routes
+// ----------------------------
 const authRoutes = require('./routes/authRoutes');
 const transaction = require("./routes/transaction");
 const goalRoutes = require("./routes/goalRoutes");
@@ -19,17 +21,17 @@ const chatRoutes = require("./routes/chatRoutes");
 // ----------------------------
 // CORS configuration
 // ----------------------------
-// Replace these URLs with your frontend URLs
+// Allow local dev + deployed frontend URL
 const allowedOrigins = [
-    "http://localhost:5173",               // local dev
-    "https://financetracker-backend-tv60.onrender.com"   // deployed frontend
+    "http://localhost:5173",                       // Local frontend
+    "https://financetracker-ra2k.onrender.com"    // Deployed frontend URL
 ];
 
 app.use(cors({
     origin: allowedOrigins,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true  // Needed if frontend sends cookies or auth headers
+    credentials: true   // Required if frontend sends cookies/JWT
 }));
 
 // ----------------------------
@@ -64,12 +66,8 @@ setInterval(() => {
 const MONGO_URL = process.env.MONGO_URL;
 
 mongoose.connect(MONGO_URL)
-    .then(() => {
-        console.log("✅ Connected to MongoDB");
-    })
-    .catch((err) => {
-        console.log("❌ Error connecting to MongoDB:", err);
-    });
+    .then(() => console.log("✅ Connected to MongoDB"))
+    .catch(err => console.log("❌ Error connecting to MongoDB:", err));
 
 // ----------------------------
 // Start server
