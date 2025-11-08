@@ -16,12 +16,12 @@ export default function Settings() {
 
     const fetchSettings = async () => {
       try {
-        const signUpRes = await axios.get("https://financetracker-backend-tv60.onrender.com/api/auth/user", {
+        const signUpRes = await axios.get("http://localhost:8080/api/auth/user", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setSignUpData({ ...signUpRes.data, password: "" });
 
-        const onboardingRes = await axios.get("https://financetracker-backend-tv60.onrender.com/api/auth/onboarding", {
+        const onboardingRes = await axios.get("http://localhost:8080/api/auth/onboarding", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setOnboardingData(onboardingRes.data);
@@ -50,14 +50,14 @@ export default function Settings() {
     try {
       if (signUpData.password) {
         await axios.put(
-          "https://financetracker-backend-tv60.onrender.com/api/auth/user",
+          "http://localhost:8080/api/auth/user",
           { password: signUpData.password },
           { headers: { Authorization: `Bearer ${token}` } }
         );
       }
 
       await axios.put(
-        "https://financetracker-backend-tv60.onrender.com/api/auth/onboarding",
+        "http://localhost:8080/api/auth/onboarding",
         onboardingData,
         { headers: { Authorization: `Bearer ${token}` } }
       );

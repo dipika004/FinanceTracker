@@ -15,7 +15,7 @@ const ChatSidebar = forwardRef(({ selectedChatId, onSelectChat, onNewChat }, ref
       return;
     }
     try {
-      const res = await axios.get("https://financetracker-backend-tv60.onrender.com/api/chat/history", {
+      const res = await axios.get("http://localhost:8080/api/chat/history", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setChats(res.data);
@@ -44,7 +44,7 @@ const ChatSidebar = forwardRef(({ selectedChatId, onSelectChat, onNewChat }, ref
 
     const token = localStorage.getItem("token");
     try {
-      await axios.delete(`https://financetracker-backend-tv60.onrender.com/api/chat/${id}`, {
+      await axios.delete(`http://localhost:8080/api/chat/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setChats((prev) => prev.filter((c) => c._id !== id));

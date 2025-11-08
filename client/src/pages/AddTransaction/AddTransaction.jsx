@@ -28,7 +28,7 @@ const AddTransaction = () => {
     const fetchCategories = async () => {
       try {
         const res = await axios.get(
-          "https://financetracker-backend-tv60.onrender.com/api/transactions/categories",
+          "http://localhost:8080/api/transactions/categories",
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setUserCategories(res.data.categories || []);
@@ -45,7 +45,7 @@ const AddTransaction = () => {
     const fetchTransaction = async () => {
       try {
         const res = await axios.get(
-          `https://financetracker-backend-tv60.onrender.com/api/transactions/${id}`,
+          `http://localhost:8080/api/transactions/${id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setFormData(res.data);
@@ -88,12 +88,12 @@ const AddTransaction = () => {
 
     try {
       if (id) {
-        await axios.put(`https://financetracker-backend-tv60.onrender.com/api/transactions/${id}`, dataToSend, {
+        await axios.put(`http://localhost:8080/api/transactions/${id}`, dataToSend, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("Transaction updated successfully");
       } else {
-        await axios.post("https://financetracker-backend-tv60.onrender.com/api/transactions/add", dataToSend, {
+        await axios.post("http://localhost:8080/api/transactions/add", dataToSend, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("Transaction added successfully");

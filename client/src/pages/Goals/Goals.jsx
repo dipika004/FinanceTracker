@@ -20,7 +20,7 @@ export default function Goals() {
         return;
       }
       try {
-        const res = await axios.get("https://financetracker-backend-tv60.onrender.com/api/goals", {
+        const res = await axios.get("http://localhost:8080/api/goals", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setGoals(res.data);
@@ -52,7 +52,7 @@ export default function Goals() {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this goal?")) return;
     try {
-      await axios.delete(`https://financetracker-backend-tv60.onrender.com/api/goals/${id}`, {
+      await axios.delete(`http://localhost:8080/api/goals/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setGoals(goals.filter((g) => g._id !== id));
@@ -70,7 +70,7 @@ export default function Goals() {
     }
     try {
       await axios.put(
-        `https://financetracker-backend-tv60.onrender.com/api/goals/add-savings/${id}`,
+        `http://localhost:8080/api/goals/add-savings/${id}`,
         { amount },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -17,7 +17,7 @@ export default function AIAssistant() {
     }
     try {
       const res = await axios.post(
-        "https://financetracker-backend-tv60.onrender.com/api/chat/new",
+        "http://localhost:8080/api/chat/new",
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
