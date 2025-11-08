@@ -31,7 +31,7 @@ export default function AddGoal() {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:8080/api/goals/add", form, {
+      await axios.post("https://financetracker-backend-tv60.onrender.com/api/goals/add", form, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("🎯 Goal added successfully!");

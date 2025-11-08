@@ -66,7 +66,7 @@ export default function Onboarding() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/auth/onboarding",
+        "https://financetracker-backend-tv60.onrender.com/api/auth/onboarding",
         formData,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },

@@ -19,7 +19,7 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:8080/api/auth/login", formData);
+      const response = await axios.post("https://financetracker-backend-tv60.onrender.com/api/auth/login", formData);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("name", response.data.user?.name || "");
       localStorage.setItem("userId", response.data.id?.id || "");

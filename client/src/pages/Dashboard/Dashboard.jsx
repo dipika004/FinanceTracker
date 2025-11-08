@@ -53,7 +53,7 @@ export default function Dashboard() {
     const fetchTransactions = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/transactions/transaction-data",
+          "https://financetracker-backend-tv60.onrender.com/api/transactions/transaction-data",
           { headers: { Authorization: `Bearer ${token}` } }
         );
 
@@ -115,7 +115,7 @@ export default function Dashboard() {
 
     const fetchGoals = async () => {
       try {
-        const goalResponse = await axios.get("http://localhost:8080/api/goals", {
+        const goalResponse = await axios.get("https://financetracker-backend-tv60.onrender.com/api/goals", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const goalsData = goalResponse.data || [];
